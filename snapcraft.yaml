@@ -1,0 +1,24 @@
+name: elasticsearch 
+version: 5.6.6
+summary: Elasticsearch is a distributed, RESTful search and analytics engine 
+description: |
+  Elasticsearch is a distributed, RESTful search and analytics engine 
+  capable of solving a growing number of use cases. 
+  As the heart of the Elastic Stack, it centrally stores your data 
+  so you can discover the expected and uncover the unexpected. 
+
+grade: stable 
+confinement: strict
+
+apps:
+  elasticsearch:
+    command: bin/elasticsearch
+    daemon: simple
+    plugs: [network, network-bind]
+
+parts:
+  elasticsearch:
+    plugin: dump
+    source: https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.6.tar.gz
+    stage-packages:
+      - default-jdk
